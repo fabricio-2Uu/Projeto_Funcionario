@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+import dominio.Endereco;
+import dominio.Funcionario;
+
 public class Testa_Funcionario {
 
 	public static void main(String[] args) {
