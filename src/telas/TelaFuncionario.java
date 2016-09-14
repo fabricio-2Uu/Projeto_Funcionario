@@ -51,9 +51,8 @@ public class TelaFuncionario {
 
 	  public void leSexo() {
 	    System.out.print("Digite o sexo (M ou F): ");
-	    char sexo = scan.nextLine().charAt(0);
-	    //scan.nextLine(); //Necessário sempre depois que lê um número (para limpar o ENTER do buffer do teclado).
-	    funcionario.setSexo(sexo);
+	    String sexo = scan.next();
+	    Funcionario.setSexo(sexo);
 	 }
 	  
 	  public void leEndereco() {

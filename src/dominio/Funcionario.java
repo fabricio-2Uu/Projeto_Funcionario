@@ -5,9 +5,30 @@ public class Funcionario {
 	private String nome;
 	private double salarioBruto;
 	private String cpf;
-	private char sexo;
+	private static String sexo;
 	private Endereco endereco;
+	private static double limiteINSS;
 	
+	public static double getLimiteINSS() {
+		return limiteINSS;
+	}
+	public static void setLimiteINSS() {
+		Funcionario.limiteINSS = 900.00;
+	}
+	// Define o sexo como "MASCULINO" ou "FEMININO".
+	public static void setSexo(String sexo) {
+		
+		if (sexo == "M" || sexo == "m" )
+			Funcionario.sexo = "MASCULINO";
+		if (sexo == "F" || sexo == "f" || sexo == "F" )
+			Funcionario.sexo = "FEMININO";
+		else
+			throw new RuntimeException("Erro: Insira M para Masculino ou F para Feminino");
+	}
+	// Buscar o sexo.
+	public String getSexo() {
+		return Funcionario.sexo;
+	}
 	// Buscar o nome.
 	public String getNome() {
 		return "Nome : " + nome;
@@ -46,21 +67,9 @@ public class Funcionario {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	// Buscar o sexo.
-	public char getSexo() {
-		return sexo;
-	}
-	// Define o sexo como "M" ou "F".
-	public void setSexo(char sexo) {
-		
-		if (sexo == 'M' || sexo == 'F' || sexo == 'm' || sexo == 'f' )
-			this.sexo = sexo;
-		else
-			throw new RuntimeException("Erro: Insira M para Masculino ou F para Feminino");
-	}
 	// Construtor com todos os parâmetros.
-	public Funcionario(String n, char s, String cpf, double sal){
-			this.setSexo(s);
+	public Funcionario(String n, String s, String cpf, double sal){
+			Funcionario.setSexo(s);
 			this.nome = n;
 			this.cpf = cpf;
 			this.setSalarioBruto(sal);
@@ -115,13 +124,13 @@ public class Funcionario {
 	}
 	
 	//Construtor para todos os atributos.
-	public Funcionario(String nome, char sexo, String cpf, double salarioBruto,
+	public Funcionario(String nome, String sexo, String cpf, double salarioBruto,
 			Endereco endereco) {
 		
 		this.setNome(nome);
 		this.setSalarioBruto(salarioBruto);
 		this.setCpf(cpf);
-		this.setSexo(sexo);
+		Funcionario.setSexo(sexo);
 		this.setEndereco(endereco);
 	}
 	
@@ -130,7 +139,7 @@ public class Funcionario {
 		this.setNome("---");
 		this.setSalarioBruto(0.0);
 		this.setCpf("---");
-		this.setSexo('F');
+		Funcionario.setSexo("F");
 		
 	    Endereco e;
 	    e = new Endereco("---", 31);
@@ -138,13 +147,13 @@ public class Funcionario {
 	}
 	
 	//Construtor para todos os atributos de Funcionario e Endereço.
-     public Funcionario(String nome, char sexo, String cpf, double salarioBruto , 
+     public Funcionario(String nome, String sexo, String cpf, double salarioBruto , 
     		 String rua, int numero) {
     	 
     	this.setNome(nome);
  		this.setSalarioBruto(salarioBruto);
  		this.setCpf(cpf);
- 		this.setSexo(sexo);
+ 		Funcionario.setSexo(sexo);
  		
 	    Endereco e;
 	    e = new Endereco(rua, numero);

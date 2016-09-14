@@ -14,7 +14,7 @@ public class Testa_Funcionario {
 		String nome = keyboard.nextLine();
 		
 		System.out.println("Digite o Sexo (M ou F): ");
-		char sexo = keyboard.nextLine().charAt(0);
+		String sexo = keyboard.nextLine();
 		
 		System.out.println("Digite o CPF: ");
 		String cpf = keyboard.nextLine();
@@ -33,7 +33,7 @@ public class Testa_Funcionario {
 		
 		Endereco e = new Endereco(rua, numero);
 		Funcionario Func1 = new Funcionario(nome, sexo, cpf, salario, e);
-		Funcionario Func2 = new Funcionario("Jorge", 'M', "654.456.369-95", 3214.32, e);
+		Funcionario Func2 = new Funcionario("Jorge", "M", "654.456.369-95", 3214.32, e);
 		Funcionario Func3 = Func2;
 		System.out.println(Func1.equals(Func2));
 		System.out.println(Func1.equals(Func3));
