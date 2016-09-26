@@ -7,20 +7,20 @@ public class Funcionario {
 	private String cpf;
 	private static String sexo;
 	private Endereco endereco;
-	private static double limiteINSS;
+	private static double limiteINSS = 900;
 	
 	public static double getLimiteINSS() {
 		return limiteINSS;
 	}
-	public static void setLimiteINSS() {
-		Funcionario.limiteINSS = 900.00;
+	public static void setLimiteINSS(double valor) {
+		Funcionario.limiteINSS = valor;
 	}
 	// Define o sexo como "MASCULINO" ou "FEMININO".
 	public static void setSexo(String sexo) {
 		
-		if (sexo == "M" || sexo == "m" )
+		if (sexo.equals("M") || sexo.equals("m") )
 			Funcionario.sexo = "MASCULINO";
-		if (sexo == "F" || sexo == "f" || sexo == "F" )
+		if (sexo.equals("F") || sexo.equals("f") )
 			Funcionario.sexo = "FEMININO";
 		else
 			throw new RuntimeException("Erro: Insira M para Masculino ou F para Feminino");
@@ -89,10 +89,10 @@ public class Funcionario {
 	}
 	//Busca o valor do INSS.
 	public double getValorINSS(){
-		if ((Math.floor((salarioBruto * this.getTxINSS())*100)/100) < 900)
+		if ((Math.floor((salarioBruto * this.getTxINSS())*100)/100) < Funcionario.getLimiteINSS())
 			return Math.floor((salarioBruto * this.getTxINSS())*100)/100;
 		else
-			return 900;
+			return Funcionario.getLimiteINSS();
 	}
 	//Busca o valor do salário líquido.
 	public double getSalarioLiqINSS(){
@@ -199,7 +199,7 @@ public class Funcionario {
 		
 		//Variável temporária para avaliar se a txINSS atingiu o teto e tranformá-la em String.
 		String txInss;		
-		if ((Math.floor((salarioBruto * this.getTxINSS())*100)/100) > 900)
+		if ((Math.floor((salarioBruto * this.getTxINSS())*100)/100) > Funcionario.getLimiteINSS())
 			txInss = "11% -> teto";
 		else
 			txInss = String.valueOf(this.getTxINSS()*100) + "%";

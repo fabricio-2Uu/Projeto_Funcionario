@@ -11,7 +11,8 @@ public class TesteTelaFuncionario {
 		Funcionario f2 = new Funcionario();
 	    
 	    TelaFuncionario tela = new TelaFuncionario(f1);
-
+	    
+	    tela.leTetoINSS();
 	    tela.leAtributos();
 	    tela.imprime();
 

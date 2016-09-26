@@ -51,7 +51,7 @@ public class TelaFuncionario {
 
 	  public void leSexo() {
 	    System.out.print("Digite o sexo (M ou F): ");
-	    String sexo = scan.next();
+	    String sexo = scan.nextLine();
 	    Funcionario.setSexo(sexo);
 	 }
 	  
@@ -66,6 +66,13 @@ public class TelaFuncionario {
 		    e.setRua(s);
 		    e.setNumero(numero);
 		    funcionario.setEndereco(e);
+	  }
+	  
+	  public void leTetoINSS(){
+		  System.out.print("Digite o teto INSS: ");
+		  double teto = scan.nextDouble();
+		  scan.nextLine();
+		  Funcionario.setLimiteINSS(teto);
 	  }
 	  
 	  public void leAtributos() {
