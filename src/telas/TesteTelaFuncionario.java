@@ -1,14 +1,18 @@
 package telas;
 
-import dominio.Funcionario;
+import dominio.FuncionarioAbstrato;
+import dominio.FuncionarioComissionado;
+import dominio.FuncionarioFixo;
+import dominio.FuncionarioHorista;
 
 public class TesteTelaFuncionario {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	  
-		Funcionario f1 = new Funcionario();
-		Funcionario f2 = new Funcionario();
+		FuncionarioFixo f1 = new FuncionarioFixo();
+		FuncionarioHorista f2 = new FuncionarioHorista();
+		FuncionarioComissionado f3 = new FuncionarioComissionado();
 	    
 	    TelaFuncionario tela = new TelaFuncionario(f1);
 	    
@@ -20,7 +24,8 @@ public class TesteTelaFuncionario {
 	    tela.leAtributos();
 	    tela.imprime();
 	    
-	    tela.setFuncionario(f1);
+	    tela.setFuncionario(f3);
+	    tela.leAtributos();;
 	    tela.imprime();
 	    
 	    System.out.println(f1.equals(f2));

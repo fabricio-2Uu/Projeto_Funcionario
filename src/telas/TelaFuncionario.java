@@ -3,21 +3,21 @@ package telas;
 import java.util.Scanner;
 
 import dominio.Endereco;
-import dominio.Funcionario;
+import dominio.FuncionarioAbstrato;
 
 public class TelaFuncionario {
 	 //Atributo que mantem uma referencia ao objeto funcionario e endereço
-	  private Funcionario funcionario;
+	  private FuncionarioAbstrato funcionario;
 	  
 	  //Atributo para fazer leitura pelo teclado.
 	  protected static Scanner scan = new Scanner(System.in);
 	  
 	  //Construtor.
-	  public TelaFuncionario(Funcionario a) {
+	  public TelaFuncionario(FuncionarioAbstrato a) {
 	    setFuncionario(a);
 	  }
 	  
-	  public void setFuncionario(Funcionario a){
+	  public void setFuncionario(FuncionarioAbstrato a){
 	    if (a == null) {
 	      throw new RuntimeException("Erro: funcionario null.");
 	    }
@@ -26,7 +26,7 @@ public class TelaFuncionario {
 	    }
 	  }
 	  
-	  public Funcionario getFuncionario() {
+	  public FuncionarioAbstrato getFuncionario() {
 	    return funcionario;
 	  }
 
@@ -42,17 +42,10 @@ public class TelaFuncionario {
 		    funcionario.setCpf(s);
 		  }
 
-	  public void leSalarioBruto() {
-	    System.out.print("Digite o salário: ");
-	    double d = scan.nextDouble();
-	    scan.nextLine(); //Necessário sempre depois que lê um número (para limpar o ENTER do buffer do teclado).
-	    funcionario.setSalarioBruto(d);
-	  }
-
 	  public void leSexo() {
 	    System.out.print("Digite o sexo (M ou F): ");
 	    String sexo = scan.nextLine();
-	    Funcionario.setSexo(sexo);
+	    FuncionarioAbstrato.setSexo(sexo);
 	 }
 	  
 	  public void leEndereco() {
@@ -72,24 +65,23 @@ public class TelaFuncionario {
 		  System.out.print("Digite o teto INSS: ");
 		  double teto = scan.nextDouble();
 		  scan.nextLine();
-		  Funcionario.setLimiteINSS(teto);
+		  FuncionarioAbstrato.setLimiteINSS(teto);
 	  }
 	  
 	  public void leAtributos() {
 	    leNome();
 	    leCpf();
 	    leSexo();
-	    leSalarioBruto();
 	    leEndereco();
 	    
 	  }
 
 	  public void imprime() {
-		String salarioBruto = Double.toString(funcionario.getSalarioBruto());
+		String salarioBruto = Double.toString(funcionario.salarioBruto());
 		
 		//Variável temporária para avaliar se a txINSS atingiu o teto e tranformá-la em String.
 		String txInss;		
-		if ((Math.floor((funcionario.getSalarioBruto() * funcionario.getTxINSS())*100)/100) > 900)
+		if ((Math.floor((funcionario.salarioBruto() * funcionario.getTxINSS())*100)/100) > 900)
 			txInss = "11% -> teto";
 		else
 			txInss = String.valueOf(funcionario.getTxINSS()*100) + "%";
