@@ -1,12 +1,19 @@
 package dominio;
 
 public abstract class FuncionarioAbstrato {
-	
-	private String nome;
-	private String cpf;
-	public static String sexo;
-	private Endereco endereco;
+	//Atributos de Classe
 	private static double limiteINSS = 900;
+
+	//Constantes.  
+	public static final char MASCULINO = 'M';
+	public static final char FEMININO  = 'F';
+
+	//Atributos de Instancia
+	private String nome;
+	private char sexo;
+	private String cpf;
+	private double salarioBruto;
+	private Endereco endereco;
 	
 	abstract public float salarioBruto();
 	
@@ -21,18 +28,14 @@ public abstract class FuncionarioAbstrato {
 	}
 	
 	// Define o sexo como "MASCULINO" ou "FEMININO".
-	public static void setSexo(String sexo) {
-		
-		if (sexo.equals("M") || sexo.equals("m") )
-			FuncionarioAbstrato.sexo = "MASCULINO";
-		if (sexo.equals("F") || sexo.equals("f") )
-			FuncionarioAbstrato.sexo = "FEMININO";
-		else
-			throw new RuntimeException("Erro: Insira M para Masculino ou F para Feminino");
+	public void setSexo(char sexo) {
+		if ((sexo==MASCULINO) || (sexo==FEMININO)) {
+			this.sexo = sexo;
+		}
 	}
 	// Buscar o sexo.
-	public String getSexo() {
-		return FuncionarioAbstrato.sexo;
+	public char getSexo() {
+		return sexo;
 	}
 	// Buscar o nome.
 	public String getNome() {
@@ -119,11 +122,11 @@ public abstract class FuncionarioAbstrato {
 	}
 	
 	//Construtor para todos os atributos.
-	public FuncionarioAbstrato(String nome, String sexo, String cpf, Endereco endereco) {
+	public FuncionarioAbstrato(String nome, char sexo, String cpf, Endereco endereco) {
 		
 		this.setNome(nome);
 		this.setCpf(cpf);
-		FuncionarioAbstrato.setSexo(sexo);
+		this.setSexo(sexo);
 		this.setEndereco(endereco);
 	}
 	
@@ -131,7 +134,7 @@ public abstract class FuncionarioAbstrato {
 	public FuncionarioAbstrato() {
 		this.setNome("---");
 		this.setCpf("---");
-		FuncionarioAbstrato.setSexo("F");
+		this.setSexo('-');
 		
 	    Endereco e;
 	    e = new Endereco("---", 31);
@@ -139,11 +142,11 @@ public abstract class FuncionarioAbstrato {
 	}
 	
 	//Construtor para todos os atributos de Funcionario e Endereço.
-     public FuncionarioAbstrato(String nome, String sexo, String cpf, String rua, int numero) {
+     public FuncionarioAbstrato(String nome, char sexo, String cpf, String rua, int numero) {
     	 
     	this.setNome(nome);
  		this.setCpf(cpf);
- 		FuncionarioAbstrato.setSexo(sexo);
+ 		this.setSexo(sexo);
  		
 	    Endereco e;
 	    e = new Endereco(rua, numero);

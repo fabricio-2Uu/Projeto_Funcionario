@@ -44,8 +44,8 @@ public class TelaFuncionario {
 
 	  public void leSexo() {
 	    System.out.print("Digite o sexo (M ou F): ");
-	    String sexo = scan.nextLine();
-	    FuncionarioAbstrato.setSexo(sexo);
+	    char sexo = scan.nextLine().charAt(0);
+	    funcionario.setSexo(sexo);
 	 }
 	  
 	  public void leEndereco() {

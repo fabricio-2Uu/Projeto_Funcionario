@@ -1,6 +1,5 @@
 package telas;
 
-import dominio.FuncionarioAbstrato;
 import dominio.FuncionarioComissionado;
 import dominio.FuncionarioFixo;
 import dominio.FuncionarioHorista;
