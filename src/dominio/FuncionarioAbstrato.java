@@ -1,5 +1,8 @@
 package dominio;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 public abstract class FuncionarioAbstrato {
 	//Atributos de Classe
 	private static double limiteINSS = 900;
@@ -14,7 +17,16 @@ public abstract class FuncionarioAbstrato {
 	private String cpf;
 	private double salarioBruto;
 	private Endereco endereco;
+	private Date dataNascimento;
 	
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
 	abstract public float salarioBruto();
 	
 	// retorna o valor do limite do INSS
@@ -184,40 +196,5 @@ public abstract class FuncionarioAbstrato {
 			return false;
 		return true;
 	}
-     
-     
-	//Sobrescrevi o toString() para imprimir todos os atributos do Funcionário chamando somente o objeto.
-	@Override
-	public String toString() {
-		
-		//Variável temporária para avaliar se a txINSS atingiu o teto e tranformá-la em String.
-		String txInss;		
-		if ((Math.floor((salarioBruto() * this.getTxINSS())*100)/100) > FuncionarioAbstrato.getLimiteINSS())
-			txInss = "11% -> teto";
-		else
-			txInss = String.valueOf(this.getTxINSS()*100) + "%";
-		
-		//Variável temporária para avaliar a txIR e tranformá-la em String.
-		String txIR;		
-		txIR = String.valueOf(this.getTxIR()*100) + "%";
-		
-		return  "----------------------------------" +
-			    "\nDados do Funcionário" +
-			    "\n----------------------------------" +
-				"\nNome = " + nome + 
-				"\nSexo = " + sexo +  
-				"\nCPF = " + cpf + 
-				"\n----------------------------------" +
-				"\nSalário Bruto            = " + salarioBruto() +
-				"\nINSS (" + txInss + ")             =  " + this.getValorINSS() +
-				"\n                     -------------" +
-				"\nSalário Base IR          = " + this.getSalarioLiqINSS() +
-				"\nIR (" + txIR + ")               =  " + this.getValorIR() +
-				"\n                     -------------" +
-				"\nSalário Líquido          = " + this.getSalarioLiquido() +
-				"\n----------------------------------"+
-				"\nEndereço: " + this.endereco.getRua() + " Numero: " + this.endereco.getNumero();
-	}
-	
 	
 }

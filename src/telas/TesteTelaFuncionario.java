@@ -10,12 +10,13 @@ public class TesteTelaFuncionario {
 		// TODO Auto-generated method stub
 	  
 		FuncionarioFixo f1 = new FuncionarioFixo();
+		f1.setSalario(5000);
 		FuncionarioHorista f2 = new FuncionarioHorista();
 		FuncionarioComissionado f3 = new FuncionarioComissionado();
 	    
 	    TelaFuncionario tela = new TelaFuncionario(f1);
 	    
-	    tela.leTetoINSS();
+	    //tela.leTetoINSS();
 	    tela.leAtributos();
 	    tela.imprime();
 
